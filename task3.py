@@ -1,9 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#   This code i the same but to start with no particles and 
+#   add 100 every second two changes were made
 
-
-x = np.x = np.empty((0, 2), dtype=float)
+x = np.empty((0, 2), dtype=float)#  Creates empty array we can append to 
 u = np.array([0.3,0])
 h = 0.1
 D = 0.02
@@ -14,7 +15,7 @@ c = []
 states = []
 ccalc = 0
 while T <=60:
-    for i in range(10):
+    for i in range(10):#    And here the particles get added 10 per 0.1 seconds
         x = np.vstack([x, [0,0]])
     for i in range(len(x)):
         x[i] += u*h + np.sqrt(2*D*h)*np.random.multivariate_normal([0, 0], np.eye(2))
@@ -29,7 +30,7 @@ while T <=60:
         for i in range(nx.shape[0]):
             for j in range(nx.shape[1]):
                 pos = np.array([nx[i,j], ny[i,j]])
-                Z[i,j] = np.mean(np.linalg.norm(x - pos, axis=1) < 0.2)
+                Z[i,j] = np.mean(np.linalg.norm(x - pos, axis=1) < 0.1)
         Cstaes.append([nx,ny,Z])
     T += h
     T = np.round(T,1)
